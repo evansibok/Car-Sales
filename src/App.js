@@ -6,17 +6,20 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-import { addFeature, removeFeature } from './components/redux/actionCreators'
+import { addFeature, remove } from './components/redux/actionCreators'
 
-
-export const App = ({ state }) => {
+export const App = ({ state, addFeature, remove }) => {
 
   const removeFeature = item => {
     // dispatch an action here to remove an item
+
   };
 
   const buyItem = item => {
     // dipsatch an action here to add an item
+    const newfeature = state.additionalFeatures.find(feature => feature.id === item.id);
+    addFeature(state.additionalPrice, newfeature)
+
   };
 
   return (
@@ -26,7 +29,7 @@ export const App = ({ state }) => {
         <AddedFeatures car={state.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures store={state.store} />
+        <AdditionalFeatures store={state.additionalFeatures} buyItem={buyItem} />
         <Total car={state.car} additionalPrice={state.additionalPrice} />
       </div>
     </div>
@@ -35,5 +38,5 @@ export const App = ({ state }) => {
 
 export default connect(
   state => state,
-  { addFeature, removeFeature }
+  { addFeature, remove }
 )(App);

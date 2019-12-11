@@ -10,7 +10,7 @@ import './styles.scss';
 import * as reducers from './components/redux/reducers'
 
 const rootReducer = combineReducers({
-	state: reducers.carReducer
+	state: reducers.carReducer,
 })
 
 const store = createStore(

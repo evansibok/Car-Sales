@@ -1,9 +1,21 @@
 import * as types from './actionTypes'
 
-export const addFeature = () => {
 
+export const addFeature = (additionalPrice, item) => {
+	return {
+		type: types.ADD_FEATURE,
+		payload: {
+			additionalPrice: additionalPrice + item.price,
+			features: item,
+		},
+	}
 }
 
-export const removeFeature = () => {
+export const remove = () => {
+	return {
+		type: types.REMOVE_FEATURE,
+		payload: {
 
+		},
+	}
 }

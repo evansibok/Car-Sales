@@ -1,6 +1,6 @@
 import * as types from './actionTypes'
 
-const initialCarState = {
+const initialStore = {
 	additionalPrice: 0,
 	car: {
 		price: 26395,
@@ -17,15 +17,21 @@ const initialCarState = {
 	]
 };
 
-export function carReducer(state = initialCarState, action) {
+export function carReducer(state = initialStore, action) {
 	switch (action.type) {
 		case types.ADD_FEATURE:
 			return {
 				...state,
-
+				additionalPrice: action.payload.additionalPrice,
+				car: {
+					...state.car,
+					features: [...state.car.features, action.payload.features]
+				},
 			};
 		case types.REMOVE_FEATURE:
-			return {}
+			return {
+
+			}
 		default:
 			return state
 	}
