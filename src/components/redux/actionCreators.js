@@ -11,11 +11,13 @@ export const addFeature = (additionalPrice, item) => {
 	}
 }
 
-export const remove = () => {
+export const remove = (additionalPrice, item) => {
+	debugger
 	return {
 		type: types.REMOVE_FEATURE,
 		payload: {
-
+			additionalPrice,
+			item
 		},
 	}
 }

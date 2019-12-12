@@ -10,9 +10,11 @@ import { addFeature, remove } from './components/redux/actionCreators'
 
 export const App = ({ state, addFeature, remove }) => {
 
-  const removeFeature = item => {
+  const removeFeature = (item) => {
     // dispatch an action here to remove an item
-
+    debugger
+    const filteredFeatures = state.car.features.filter(f => f.id !== item.id);
+    remove(state.additionalPrice, filteredFeatures)
   };
 
   const buyItem = item => {
@@ -26,7 +28,7 @@ export const App = ({ state, addFeature, remove }) => {
     <div className="boxes">
       <div className="box">
         <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <AddedFeatures car={state.car} removeFeature={removeFeature} />
       </div>
       <div className="box">
         <AdditionalFeatures store={state.additionalFeatures} buyItem={buyItem} />
